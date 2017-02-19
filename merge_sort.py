@@ -4,23 +4,18 @@ def merge(left, right):
   result = []
   
   while left_index < len(left) and right_index < len(right):
-    if left[left_index] < right[right_index]:
+    if left[left_index] <= right[right_index]:
       result.append(left[left_index])
       left_index += 1
-    if left[left_index] > right[right_index]:
+    else:
       result.append(right[right_index])
       right_index += 1
-    elif left[left_index] == right[right_index]:
-      result.extend(right[right_index], left[left_index])
-      right_index += 1
-      left_index += 1
-
-  if len(left)-1 > left_index:
-    result.extend(left[left_index+1:])
-  if len(right)-1 > right_index:
-    result.extend(right[right_index+1:])  
     
-  print(result)  
+  # if len(left)-1 > left_index:
+  #   result.extend(left[left_index+1:])
+  # if len(right)-1 > right_index:
+  #   result.extend(right[right_index+1:])  
+  print(result)
   return result  
   
 def merge_sort(array):
