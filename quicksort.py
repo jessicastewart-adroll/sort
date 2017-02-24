@@ -4,14 +4,15 @@ def partition(array):
   pivot = len(array)-1
   i = pivot-1
   while i >= 0:
-    if array[i] > array[pivot]:
-      array[i], array[pivot] = array[pivot], array[i]
+    while array[i] > array[pivot]:
+      array[i], array[i+1] = array[i+1], array[i]
       pivot = i
-    i -= 1
-    
-  return partition(array[:pivot]) + partition(array[pivot:])
+      i = pivot-1
+    i -= 1  
+  print(array)  
+  #return partition(array[:pivot]) + [pivot] + partition(array[pivot+1:])
   
 def quicksort(array):
-  return partition(array)
+  partition(array)
   
-print(quicksort([3, 4, 5, -9, 0, -7]))  
+print(quicksort([3, 7, 8, 5, 2, 1, 9, 5, 4]))  
