@@ -3,12 +3,16 @@ def partition(array):
   
   pivot = len(array)-1
   i = pivot-1
-  while i >= 0:
-    while array[i] > array[pivot]:
-      array[i], array[i+1] = array[i+1], array[i]
+  
+  while i <= 0:
+    j = i
+    while i < pivot and array[i] > array[i-1]:
+      array[i-1], array[i] = array[i], array[i-1]
+      i += 1
+    if array[i] > array[pivot]:
+      array[pivot], array[i] = array[i], array[pivot]
       pivot = i
-      i = pivot-1
-    i -= 1  
+    i = j-1  
   print(array)  
   #return partition(array[:pivot]) + [pivot] + partition(array[pivot+1:])
   
