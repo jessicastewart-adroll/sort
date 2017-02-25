@@ -1,4 +1,4 @@
-def quicksort_inplace(array):
+def quicksort(array):
   if len(array) < 2: return array
   
   more = []
@@ -13,8 +13,8 @@ def quicksort_inplace(array):
     else:
       same.append(val)
       
-  qmore = quicksort_inplace(more)
-  qless = quicksort_inplace(less)
+  qmore = quicksort(more)
+  qless = quicksort(less)
   return qless + same + qmore   
   
-print(quicksort_inplace([3, 7, 8, 5, 2, 1, 9, 5, 4])) 
+print(quicksort([3, 7, 8, 5, 2, 1, 9, 5, 4])) 
