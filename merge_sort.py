@@ -1,14 +1,26 @@
-def divide(array, start, end):
-  if end == start:
-    print(array[start])
-    return
+def merge(A, B):
+  C = []
+  while A and B:
+    if A[0] <= B[0]:
+      C.append(A[0])
+      A = A[1:]
+    else:
+      C.append(B[0])
+      B = B[1:]
+      
+  if A:
+    C.extend(A)
+  if B:
+    C.extend(B)
+  return C  
   
-  mid = end//2 + start
-  divide(array, start, mid)
-  divide(array, mid, end)
-
-def merge_sort(array):
-  divide(array, 0, len(array)-1)
-    
+def merge_sort(input_list):
+  if len(input_list) == 1:
+    return input_list
   
-merge_sort([-1, -2, -3, -4, -5]) 
+  mid = len(input_list)//2
+  left = merge_sort(input_list[:mid])
+  right = merge_sort(input_list[mid:])
+  return merge(left, right)
+  
+print(merge_sort([100, 3, -1, 4, -7]))
