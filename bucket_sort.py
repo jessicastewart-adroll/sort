@@ -1,36 +1,18 @@
-def insertion_sort(array):
-	i = 1
-	n = len(array)
-
-	while i < n:
-		current = array[i]
-
-		j = i-1
-		while j >= 0 and current < array[j]:
-			array[j+1] = array[j]
-			j -= 1
-		array[j+1] = current	
-		i += 1
-
-
-is_test = [12, 11, 13, 5, 6]
-print('BEFORE', is_test)
-insertion_sort(is_test)
-print('AFTER', is_test)
-
+# when values aren't integers
 def bucket_sort(array):
-	buckets = [[] for i in range(10)]
-	for val in array:
-		index = int(val*10)
-		buckets[index].append(val)
-
-	result = []
-	for bucket in buckets:
-		insertion_sort(bucket)
-		result.extend(bucket)
-
-	return result
-
-test = [0.897, 0.565, 0.656, 0.1234, 0.665, 0.3434]
-print('BEFORE', test)
-print('AFTER', bucket_sort(test))
+  max_value = int(max(array))
+  
+  buckets = [[] for i in range(max_value+1)]
+  for val in array:
+    buckets[int(val)].append(val)
+  
+  i = 0
+  for bucket in buckets:
+    if bucket:
+      array[i:i+len(bucket)] = sorted(bucket)
+      i = i+len(bucket)
+    
+test = [4.5, 4, 7.3333, 8, 8, 1, 1.6]    
+bucket_sort(test)
+# [1, 1.6, 4, 4.5, 7.3333, 8, 8] 
+print(test)
